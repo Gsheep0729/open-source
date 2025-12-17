@@ -1,0 +1,5 @@
+[project]
+name = "pewallet"
+
+[tool.pyside6-project]
+files = ["calc.py", "ewallet.dat", "ewallet_data.py", "input_data.py", "input_utils.py", "main.py", "output.py", "process.py"]

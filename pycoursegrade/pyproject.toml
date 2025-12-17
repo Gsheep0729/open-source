@@ -1,0 +1,6 @@
+[project]
+name = "CourseGrade"
+
+[tool.pyside6-project]
+files = ["coursegrade.dat", "coursegrade.py", "input.py", "inputgrade.py",
+"main.py", "output.py", "process.py", "score.py", "utils.py"]
