@@ -1,19 +1,13 @@
-/**
- * @file    /run/media/root/铠侠D/桌面文件/开源技术群资料/作业/14th/Course_selection_system/student.cppm
- * @date    2025-12-20
- * @author  GY
- * @brief   Module registrar, student partition: defines Student class
- * 
- * The interface and implementation of Student class are logically separated.
- * 
- * Change Log:
- * [v1.1] GY   2025-12-16
- *   * added the implementation of Student class
- * [v1.2] GY   2025-12-16
- *   * added Student::drops() method for course withdrawal
- * [v1.3] GY   2025-12-16
- *   * added Student::schedule() method
- */
+// Module registrar, course partition: defines Student class
+// File: student.cppm   Version: 1.0      License: AGPLv3
+// Created: Wei Gong open-src@qq.com      2025-12-12
+//
+// Description:
+//     The interface and implementation of Student class are logically separated.
+
+// Change Log:
+//     [v1.1] Wei Gong open-src@qq.com   2025-12-12
+//         * added the implementation of Student class
 
 export module registrar:student; // 学生模块分区，定义Student类
 import std;
@@ -27,7 +21,6 @@ public:
     Student(string id, string name); // 构造函数
 
     void enrollsIn(class Course* course); // 学生选课
-    void drops(class Course* course); // 学生退课
     string schedule(); // 返回学生课表字符串
     string info(); // 返回学生信息字符串
     bool hasId(string id); // 检查学生ID是否匹配
@@ -48,12 +41,10 @@ Student::Student(string id, string name)
 
 string Student::info()
 {
-    return std::format("{}   {}\n", m_id, m_name);
+    return format("{}   {}\n", m_id, m_name);
 }
 
 bool Student::hasId(string id)
 {
     return id == m_id;
 }
-
-

@@ -1,9 +1,16 @@
-/**
- * @file    /run/media/root/铠侠D/桌面文件/开源技术群资料/作业/14th/Course_selection_system/main.cpp
- * @date    2025-12-20
- * @author  GY
- * @brief   Testing the registrar system with additional features
- */
+file
+// A registrar system demo
+// File: main.cpp   Version: 1.0      License: AGPLv3
+// Created: Wei Gong open-src@qq.com      2025-12-12
+//
+// Description:
+//     Testing the registrar system
+
+// Change Log:
+//     [v1.1] Wei Gong open-src@qq.com   2025-12-12 17:57:41
+//         * simulating student course registration, viewing course enrollment lists
+//     [v1.2] Wei Gong open-src@qq.com   2025-12-12 18:07:17
+//         * simulating view student schedule
 import registrar;
 import std;
 
@@ -14,7 +21,7 @@ int main()
 
     system().initialize();
 
-    // Simulate some students enrolls in some courses
+    // Simulate some students erolls in some courses
     system().studentEnrollsInCourse("S001", "CS101");
     system().studentEnrollsInCourse("S001", "CS201");
     system().studentEnrollsInCourse("S001", "MATH101");
@@ -24,6 +31,7 @@ int main()
 
     system().studentEnrollsInCourse("S003", "CS201");
     system().studentEnrollsInCourse("S003", "MATH101");
+
 
     system().studentEnrollsInCourse("S004", "CS101");
     system().studentEnrollsInCourse("S004", "CS201");
@@ -37,15 +45,8 @@ int main()
     system().courseRoster("MATH101");
 
     system().studentSchedule("S001");
+
     system().studentSchedule("S003");
-
-    // Test course withdrawal
-    std::println("=== Testing course withdrawal ===");
-    system().studentDropsCourse("S001", "CS101");
-
-    std::println("\n=== After withdrawal ===");
-    system().studentSchedule("S001");
-    system().courseRoster("CS101");
 
     return 0;
 }
