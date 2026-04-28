@@ -1,0 +1,38 @@
+*   [33m831c77b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrelease[m[33m, [m[1;31morigin/release[m[33m)[m merge: 将dev分支v4.0版本的架构重构/业务闭环功能合并到release
+[31m|[m[32m\[m  
+[31m|[m *   [33m2208423[m[33m ([m[1;33mtag: [m[1;33mv4.0[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev[m[33m)[m merge: 将libpqxx分支的架构重构/业务闭环功能合并到dev
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m * [33m50cea67[m[33m ([m[1;32mlibpqxx[m[33m)[m feat(架构): [v4.0] 架构突围 - 静态库隔离与业务闭环
+[31m|[m [33m|[m * [33mb144b40[m feat(arch): [Pre-v3.0] 引入代理模式与时间冲突检测 完成架构解耦
+[31m|[m [33m|[m * [33mca87390[m[33m ([m[1;31morigin/libpqxx[m[33m)[m 修改为英文路径后
+[31m|[m [33m|[m * [33m8e2a6c1[m refactor(arch): 解耦数据库逻辑并重构为全独立模块化
+[31m|[m [33m|[m * [33m15f0a7c[m 重构(infra): 将 PostgreSQL 适配器封装为静态库以修复模块构建问题 主要架构重构，旨在解决 GCC C++20 Modules 在包含非 ASCII 字符路径下与 libpqxx 头文件的兼容性问题 主要变更： 新增库: 创建了 lib_db_core 静态库，使用 PIMPL 模式隔离 pqxx 依赖，隐藏底层实现细节 重构: 更新 infra.db_adapter 作为 lib_db_core 的纯净模块包装器，从模块接口中移除了所有 #include 指令 构建修复: 在 infra.db_adapter.cpp 中实施了临时方案，通过手动内联DBCore类定义来规避 GCC 模块扫描器在中文路径下的 Bug 影响: 将 lib_db_core 的硬依赖移出 C++ Modules、修复了构建过程中的 INCLUDE-TRANSLATE" 错误
+[31m|[m [33m|[m[33m/[m  
+[31m|[m * [33m0facda6[m 目前系统核心链路（选课、退课、加课、改时间、录成绩）已打通
+[31m|[m * [33m17712a2[m 已完成 SystemController 及相关组件的重构，解决了架构违规问题并完善了系统功能。
+[31m|[m * [33mcaea85c[m 预计重构SystemController
+[31m|[m * [33mbd6ad9f[m feat(infrastructure): 新增课程/选课代理模块 优化核心模块与CLI交互 ​ - 新增 infra.course_proxy.cppm/infra.enrollment_proxy.cppm 代理层文件 - 调整 CMake 构建配置，纳入新增基础设施模块 - 完善 dom.course 课程实体逻辑、pres.cli 学生菜单交互流程 - 更新知识库文档，同步模块变更与逻辑说明
+[31m|[m * [33m5b8a177[m 优化了readme文件，增加了tag合并并提交推送操作手册速查
+* [34m|[m [33mf97bba0[m 合并 v2.0 正式版到 release 分支：完成 CLI 与数据库核心集成
+[35m|[m[34m\[m[34m|[m 
+[35m|[m *   [33m119369a[m[33m ([m[1;33mtag: [m[1;33mv2.0[m[33m)[m chore(release): 发布 v2.0 版本 - 完成 CLI 与数据库的核心集成
+[35m|[m [1;31m|[m[1;32m\[m  
+[35m|[m [1;31m|[m * [33m87e2a65[m 完成教师调试
+[35m|[m [1;31m|[m * [33mf4ea633[m feat(teacher): 初始化教师实体类及核心功能实现
+[35m|[m [1;31m|[m * [33m86ec2ee[m feat(presentation): 初始化CLI交互模块并实现多角色菜单逻辑
+[35m|[m [1;31m|[m[35m/[m  
+[35m|[m[35m/[m[1;31m|[m   
+[35m|[m * [33m4192fe5[m 优化了readme文件，增加了for_md.py 使用教程
+[35m|[m * [33mf606dd5[m 测试数据库接口，增删逻辑，使得选课更直观
+[35m|[m * [33mb35c6da[m 测试数据库接口成功，但会有`double free` 报错
+[35m|[m * [33mc5e6588[m 封装 PostgreSQL 数据库访问逻辑，提供通用的执行 (execute) 和查询 (query) 接口
+[35m|[m * [33m4212ffd[m 封装 PostgreSQL 数据库访问逻辑，提供通用的执行 (execute) 和查询 (query) 接口
+[35m|[m * [33ma043860[m 数据库模块+多源文件版本
+[35m|[m * [33m43ce255[m 数据库链接，头文件版本
+[35m|[m[35m/[m  
+* [33m7cd68cc[m 优化readme：新增tag管理和推送
+* [33mcacb056[m[33m ([m[1;33mtag: [m[1;33mv1.0[m[33m)[m feat: [v1.0] 实现学生选课系统基础功能
+* [33m733b12b[m README文件增加常用git命令
+* [33m0aaf111[m[33m ([m[1;33mtag: [m[1;33mv0.0[m[33m)[m README.md放在根目录，github自动预览
+* [33mcd1d8d8[m 初始化doc/README.md
+* [33m05852f8[m 初始提交: 课程选课系统
